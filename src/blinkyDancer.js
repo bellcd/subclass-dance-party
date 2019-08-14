@@ -9,9 +9,15 @@ var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
 makeBlinkyDancer.prototype = Object.create(makeDancer.prototype);
 makeBlinkyDancer.prototype.constructor = makeBlinkyDancer;
 
-
-
 makeBlinkyDancer.prototype.step = function() {
+  const randomColor = function() {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+
+    return `rgb(${r}, ${g}, ${b})`;
+  };
+
   // alert('blinkyDancer step() called!');
 
   // call the old version of step at the beginning of any call to this new version of step
@@ -24,7 +30,8 @@ makeBlinkyDancer.prototype.step = function() {
   this.$node.toggle()
     .css({
       top: this.top,
-      left: this.left
+      left: this.left,
+      'border-color': randomColor()
     });
 };
 

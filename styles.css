@@ -1,3 +1,9 @@
+:root{
+  --left: 0;
+  --right: 0;
+  --destinationLeft: 0;
+  --destinationRight: 0;
+}
 body, html{
   height:100%;
 }
@@ -24,4 +30,21 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+}
+@keyframes slidein {
+  from {
+    top: --top;
+    left: --left;
+  }
+
+  to {
+    top: --destinationTop;
+    left: --destinationLeft;
+  }
+}
+.moving-dancer {
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
