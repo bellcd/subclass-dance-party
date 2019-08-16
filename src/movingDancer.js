@@ -1,7 +1,7 @@
 var makeMovingDancer = function(top, left, timeBetweenSteps) {
 
   makeDancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class="dancer-all moving-dancer"></span>');
+  //this.$node = $('<span class="dancer-all moving-dancer"></span>');
 };
 
 makeMovingDancer.prototype = Object.create(makeDancer.prototype);
@@ -25,9 +25,8 @@ makeMovingDancer.prototype.step = function() {
   // other effects you can use on a jQuery-wrapped html tag.
 
   this.$node.css({
-    top: this.top,
-    left: this.left,
-    '--destinationTop': destinationTop,
-    '--destinationLeft': destinationLeft
+
   });
+
+  this.$node.addClass('moving-dancer');
 };

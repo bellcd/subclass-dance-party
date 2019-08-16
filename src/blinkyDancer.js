@@ -1,7 +1,7 @@
 var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
 
   makeDancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class="dancer-all blinky-dancer"></span>');
+  // this.$node = $('<span class="dancer-all blinky-dancer"></span>');
 
   // this.step(); // unneeded?? step() is called from the superclass ...
 };
@@ -29,10 +29,12 @@ makeBlinkyDancer.prototype.step = function() {
 
   this.$node.toggle()
     .css({
-      top: this.top,
-      left: this.left,
+      // top: this.top,
+      // left: this.left,
       'border-color': randomColor()
     });
+
+  this.$node.addClass('blinky-dancer');
 };
 
 // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
