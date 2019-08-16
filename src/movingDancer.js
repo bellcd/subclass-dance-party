@@ -24,9 +24,5 @@ makeMovingDancer.prototype.step = function() {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
 
-  this.$node.css({
-
-  });
-
   this.$node.addClass('moving-dancer');
 };
