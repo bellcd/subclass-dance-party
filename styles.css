@@ -46,3 +46,21 @@ body, a:link, a:visited, a:active{
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
+
+.rotating-dancer {
+  border-radius: 2px;
+  animation-duration: 3s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
