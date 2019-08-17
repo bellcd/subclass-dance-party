@@ -35,6 +35,38 @@ $(document).ready(function() {
       });
     }
 
+    for (let i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].$node.on('click', function(e) {
+        var dancerClickedOnTop = dancer.top;
+        var dancerClickedOnLeft = dancer.left;
+        var smallest = undefined;
+        var eachDiff;
+        var otherDancer;
+
+        window.dancers.forEach(dancer => {
+          if (dancer.top !== dancerClickedOnTop && dancer.left !== dancerClickedOnLeft) {
+            eachDiff = Math.hypot(Math.abs(dancer.left - dancerClickedOnLeft), Math.abs(dancer.top - dancerClickedOnTop));
+          } else if (dancer.top === dancerClickedOnTop) {
+            eachDiff = Math.abs(dancer.left - dancerClickedOnLeft);
+          } else {
+            eachDiff = Math.abs(dancer.top - dancerClickedOnTop);
+          }
+
+          if (smallest === undefined) {
+            otherDancer = dancer
+            smallest = eachDiff;
+          } else if (eachDiff < smallest) {
+            otherDancer = dancer
+            smallest = smallest;
+          }
+        });
+
+        window.dancers[i].$node.css({'border-color': 'yellow'});
+        otherDancer.$node.css({'border-color': 'yellow'});
+      });
+    }
+
+
     $('body').append(dancer.$node);
     window.dancers.push(dancer);
   });
@@ -46,3 +78,12 @@ $(document).ready(function() {
   });
 });
 
+
+// add click handler for dancer in question
+  // on click,
+    // get top and left position of dancer in question
+    // iterate through array of all dancers
+      // if top and left positions are NOT the same as dancer in question
+        // calculate diagonal, w/Math.hypot
+      // else
+        // calculate difference in position property that is different
