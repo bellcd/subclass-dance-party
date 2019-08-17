@@ -37,27 +37,33 @@ $(document).ready(function() {
 
     for (let i = 0; i < window.dancers.length; i++) {
       window.dancers[i].$node.on('click', function(e) {
-        var dancerClickedOnTop = dancer.top;
-        var dancerClickedOnLeft = dancer.left;
+        var dancerClickedOnTop = window.dancers[i].top;
+        var dancerClickedOnLeft = window.dancers[i].left;
         var smallest = undefined;
         var eachDiff;
         var otherDancer;
 
+        debugger;
         window.dancers.forEach(dancer => {
-          if (dancer.top !== dancerClickedOnTop && dancer.left !== dancerClickedOnLeft) {
+          if (dancer.top === dancerClickedOnTop && dancer.left === dancerClickedOnLeft) {
+            // top and left are exactly the same, it's (probably) the same dancer node, so skip this iteration of the loop
+            return;
+          } else if (dancer.top !== dancerClickedOnTop && dancer.left !== dancerClickedOnLeft) {
+            // either or both of top and left are different, calculate & store the hypotenuse
             eachDiff = Math.hypot(Math.abs(dancer.left - dancerClickedOnLeft), Math.abs(dancer.top - dancerClickedOnTop));
           } else if (dancer.top === dancerClickedOnTop) {
+            // the top is the same, calculate and store the horizontal difference
             eachDiff = Math.abs(dancer.left - dancerClickedOnLeft);
           } else {
+            // the left is the same, calculate and store the vertical difference
             eachDiff = Math.abs(dancer.top - dancerClickedOnTop);
           }
 
-          if (smallest === undefined) {
-            otherDancer = dancer
+          if (smallest === undefined || eachDiff < smallest) {
+            // if smallest if still undefined OR the most recent calculated difference is less than the current smallest, set smallest to the current eachDiff
             smallest = eachDiff;
-          } else if (eachDiff < smallest) {
-            otherDancer = dancer
-            smallest = smallest;
+            // set a reference to the subclass instance with the currently smallest difference
+            otherDancer = dancer;
           }
         });
 
@@ -77,13 +83,3 @@ $(document).ready(function() {
     }
   });
 });
-
-
-// add click handler for dancer in question
-  // on click,
-    // get top and left position of dancer in question
-    // iterate through array of all dancers
-      // if top and left positions are NOT the same as dancer in question
-        // calculate diagonal, w/Math.hypot
-      // else
-        // calculate difference in position property that is different
