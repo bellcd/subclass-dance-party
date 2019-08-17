@@ -29,6 +29,12 @@ $(document).ready(function() {
       Math.round(Math.random() * 1000)
     );
 
+    if (dancer.$node.hasClass('rotating-dancer')) {
+      dancer.$node.on('mouseover', function(e) {
+        $(e.target).addClass('special-move');
+      });
+    }
+
     $('body').append(dancer.$node);
     window.dancers.push(dancer);
   });
