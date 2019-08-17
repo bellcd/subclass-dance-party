@@ -1,6 +1,7 @@
 var makeMovingDancer = function(top, left, timeBetweenSteps) {
 
   makeDancer.call(this, top, left, timeBetweenSteps);
+  this.$node.append('<img src="https://media.giphy.com/media/Mvi1ZqG17NSso/giphy.gif"/>');
   this.$node.addClass('moving-dancer');
 };
 

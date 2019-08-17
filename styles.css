@@ -6,14 +6,18 @@
 }
 body, html{
   height:100%;
+  /* background-color: green; */
+  font-family: 'Lexend Peta', sans-serif;
+
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url(http://clipart-library.com/images/kcMKrBBXi.jpg);
+  /* background-color:#444; */
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: black;
 }
 
 header {
@@ -25,17 +29,24 @@ header {
 }
 .topbar{
   height:32px;
-  background-color: #555;
+  /* background-color: #555; */
   display: flex;
   justify-content: center;
+
+  font-size: 1.5rem;
 }
 .title{
-  background-color: #777;
+  /* background-color: #777; */
 }
 .dancer-all{
-  border:10px solid red;
+  /* border:10px solid red; */
   border-radius:10px;
   position:absolute;
+}
+
+.dancer-all>img {
+  height: 100px;
+  width: 100px;
 }
 @keyframes slidein {
   from {
@@ -54,12 +65,13 @@ header {
 }
 
 .rotating-dancer {
-  border-radius: 2px;
   animation-duration: 3s;
   animation-name: rotate;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
+
+
 
 @keyframes rotate {
   from {
@@ -72,7 +84,7 @@ header {
 }
 
 .special-move {
-  transform: scale(20,30);
+  transform: scale(2,2);
   border-color: purple;
   animation-name: rotate;
   animation: growing 2s infinite;
@@ -85,5 +97,20 @@ header {
   }
   100% {
     transform: rotateY(70deg) rotate(360deg);
+  }
+}
+
+.pair-dancer {
+  animation: skew 1s infinite;
+  /* transform: skew(20deg); */
+  animation-direction: alternate;
+}
+
+@keyframes skew {
+  0% {
+    transform: skewX(50deg);
+  }
+  100% {
+    transform: skewX(-50deg);
   }
 }

@@ -4,6 +4,7 @@ var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
   // this.$node = $('<span class="dancer-all blinky-dancer"></span>');
 
   // this.step(); // unneeded?? step() is called from the superclass ...
+  this.$node.append('<img src="https://media3.giphy.com/media/Wra8NkJ6SXQhXrBa26/giphy.gif?cid=790b7611b955710101b183237295b6d6587eefc425d4a9e7&rid=giphy.gif"/>');
   this.$node.addClass('blinky-dancer');
 };
 
@@ -28,10 +29,7 @@ makeBlinkyDancer.prototype.step = function() {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
 
-  this.$node.toggle()
-    .css({
-      'border-color': randomColor()
-    });
+  this.$node.toggle();
 };
 
 // we plan to overwrite the step function below, but we still want the superclass step behavior to work,

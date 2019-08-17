@@ -29,8 +29,9 @@ $(document).ready(function() {
       Math.round(Math.random() * 1000)
     );
 
-    if (dancer.$node.hasClass('rotating-dancer')) {
+    if (dancer.$node.find('img').hasClass('rotating-dancer')) {
       dancer.$node.on('mouseover', function(e) {
+        console.log('e: ', e);
         $(e.target).addClass('special-move');
       });
     }
@@ -66,8 +67,8 @@ $(document).ready(function() {
           }
         });
 
-        window.dancers[i].$node.css({'border-color': 'yellow'});
-        otherDancer.$node.css({'border-color': 'yellow'});
+        window.dancers[i].$node.addClass('pair-dancer');
+        otherDancer.$node.addClass('pair-dancer');
       });
     }
 
