@@ -43,7 +43,6 @@ $(document).ready(function() {
         var eachDiff;
         var otherDancer;
 
-        debugger;
         window.dancers.forEach(dancer => {
           if (dancer.top === dancerClickedOnTop && dancer.left === dancerClickedOnLeft) {
             // top and left are exactly the same, it's (probably) the same dancer node, so skip this iteration of the loop
