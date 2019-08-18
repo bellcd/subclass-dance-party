@@ -12,14 +12,6 @@ makeBlinkyDancer.prototype = Object.create(makeDancer.prototype);
 makeBlinkyDancer.prototype.constructor = makeBlinkyDancer;
 
 makeBlinkyDancer.prototype.step = function() {
-  const randomColor = function() {
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-
-    return `rgb(${r}, ${g}, ${b})`;
-  };
-
   // alert('blinkyDancer step() called!');
 
   // call the old version of step at the beginning of any call to this new version of step
@@ -29,5 +21,13 @@ makeBlinkyDancer.prototype.step = function() {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
 
-  this.$node.toggle();
+  this.$node.toggle().css({'border-color':this.randomColor.call(this)});
+};
+
+makeBlinkyDancer.prototype.randomColor = function() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+
+  return `rgb(${r}, ${g}, ${b})`;
 };
